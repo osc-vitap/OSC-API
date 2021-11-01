@@ -36,4 +36,4 @@ def connection(conn):
         )
 
     json_data = json.dumps(result, indent=4, default=str)
-    
+    return json.loads(json_data, parse_int=True)
