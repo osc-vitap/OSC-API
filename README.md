@@ -23,4 +23,4 @@ Also, thanks for contributing to Open-source!
 
 ## License 
 
-OSC-API is under The MIT License. Read the [LICENSE](https://github.com/Open-Source-Community-VIT-AP/OSC-API/blob/main/LICENSE) file for more information.
+OSC-API is under The GNU General Public License v3.0. Read the [LICENSE](https://github.com/Open-Source-Community-VIT-AP/OSC-API/blob/main/LICENSE) file for more information.
