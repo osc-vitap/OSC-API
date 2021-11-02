@@ -33,9 +33,3 @@ def latest_event():
 			max = event["id"]
 			latest = event
 	return latest
-
-
-@app.route("/api/", methods=["POST"])
-def post():
-    content = request.get_json(force=True)
-    return "Data Added Successfully"
