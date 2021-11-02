@@ -1,3 +1,5 @@
-env
 .vscode
 .env
+env
+src/modules/__pycache__
+src/__pycache__
