@@ -1,6 +1,4 @@
 import json
-from pprint import pprint
-
 
 def connection(conn):
     cursor = conn.cursor()
