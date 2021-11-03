@@ -1,10 +1,15 @@
+from dotenv import load_dotenv
+import psycopg2
+import os
 import json
 
-def connection(conn):
+def connection():
+    conn = psycopg2.connect(os.getenv("DATABASE_URL"))
     cursor = conn.cursor()
     query = """SELECT * FROM eventreg_event"""
     cursor.execute(query)
     data = cursor.fetchall()
+    conn.close()
 
     result = []
 
