@@ -33,5 +33,6 @@ def connection():
             }
         )
 
+    result.sort(key=lambda x: x["id"])
     json_data = json.dumps(result, indent=4, default=str)
     return json.loads(json_data)
