@@ -3,6 +3,7 @@ import psycopg2
 import os
 import json
 
+
 def connection():
     conn = psycopg2.connect(os.getenv("DATABASE_URL"))
     cursor = conn.cursor()
