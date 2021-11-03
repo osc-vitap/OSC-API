@@ -7,12 +7,12 @@
 
 ## API Endpoints
 
-| ID  | Endpoint         | Example                                  | Details                                           |
-| --- | ---------------- | ---------------------------------------- | ------------------------------------------------- |
-| 1   | [/]              | https://osc-api.herokuapp.com/           | Index.                                            |
-| 2   | [/api/]          | https://osc-api.herokuapp.com/api/       | GET complete data on all the events.              |
-| 3   | [/api/\<int:id>] | https://osc-api.herokuapp.com/api/8      | GET data from a particular event (from Event ID). |
-| 4   | [/api/latest]    | https://osc-api.herokuapp.com/api/latest | GET data of the latest OSC event.                 |
+| ID  | Endpoint           | Example                                    | Details                                           |
+| --- | ------------------ | ------------------------------------------ | ------------------------------------------------- |
+| 1   | [/]                | https://osc-api.herokuapp.com/             | Index.                                            |
+| 2   | [/event/]          | https://osc-api.herokuapp.com/event/       | GET complete data on all the events.              |
+| 3   | [/event/\<int:id>] | https://osc-api.herokuapp.com/event/8      | GET data from a particular event (from Event ID). |
+| 4   | [/event/latest]    | https://osc-api.herokuapp.com/event/latest | GET data of the latest OSC event.                 |
 
 
 ## Contributing 
