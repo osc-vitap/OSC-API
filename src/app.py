@@ -28,11 +28,5 @@ def get_id(id):
 @app.route("/event/latest", methods=["GET"])
 def latest_event():
 	data = connection()
-	max = data[0]["id"]
-	i = 0
-	for event in data:
-		if(event["id"] > max):
-			max = event["id"]
-			i = i + 1
-	latest = data[i]
+	latest = data[-1]
 	return latest
