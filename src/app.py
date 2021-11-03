@@ -1,8 +1,13 @@
+from flask.templating import render_template
 from flask import Flask, jsonify, request
 from src.connection import connection
 
 
 app = Flask(__name__)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return "ERROR 404: CANNOT GET {}".format(request.path)
 
 @app.route("/", methods=["GET"])
 def index():
