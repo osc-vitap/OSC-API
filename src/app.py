@@ -1,10 +1,14 @@
 from flask.templating import render_template
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from src.connection import connection
+import os
 
 
 app = Flask(__name__)
 
+@app.route('/favicon.ico')
+def favicon():
+	return send_from_directory(os.path.join(app.root_path, '../assets'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 @app.errorhandler(404)
 def page_not_found(e):
     return "ERROR 404: CANNOT GET {}".format(request.path)
