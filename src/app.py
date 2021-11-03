@@ -13,19 +13,19 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-    return "Hey! This is the OSC API that is used to serve event details."
+    return "Hey! This is the OSC API that is used to serve OSC details for it's various platforms."
 
-@app.route("/api/", methods=["GET"])
+@app.route("/event/", methods=["GET"])
 def get_data():
     return jsonify(data)
 
-@app.route("/api/<int:id>", methods=["GET"])
+@app.route("/event/<int:id>", methods=["GET"])
 def get_id(id):
     for event in data:
         if event["id"] == id:
             return event
 
-@app.route("/api/latest", methods=["GET"])
+@app.route("/event/latest", methods=["GET"])
 def latest_event():
 	max = data[0]["id"]
 	for event in data:
@@ -33,9 +33,3 @@ def latest_event():
 			max = event["id"]
 			latest = event
 	return latest
-
-
-@app.route("/api/", methods=["POST"])
-def post():
-    content = request.get_json(force=True)
-    return "Data Added Successfully"
