@@ -1,10 +1,13 @@
 from flask.templating import render_template
 from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
 from src.connection import connection
 import os
 
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
+CORS(app)
 
 
 @app.route("/favicon.ico")
@@ -26,7 +29,7 @@ def index():
     return "Hey! This is the OSC API that is used to serve OSC details for it's various platforms."
 
 
-@app.route("/event/", methods=["GET"])
+@app.route("/event", methods=["GET"])
 def get_data():
     data = connection()
     return jsonify(data)
