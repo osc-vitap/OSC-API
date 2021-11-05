@@ -30,7 +30,9 @@ def connection():
                 "eventSpeaker": row[10],
                 "eventURL": row[11],
                 "eventDocumentation": row[12],
-                "eventLogo": row[13],
+                "eventLogo": "https://drive.google.com/uc?export=view&id={}".format(
+                    str(row[13].split("/")[5])
+                ),
             }
         )
 
