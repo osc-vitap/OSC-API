@@ -7,7 +7,10 @@ import os
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-CORS(app)
+api_cors_config = {
+  "origins": ["http://localhost:3000"]
+}
+CORS(app, resources={"/*": api_cors_config})
 
 
 @app.route("/favicon.ico")
@@ -25,20 +28,17 @@ def page_not_found(e):
 
 
 @app.route("/", methods=["GET"])
-@cross_origin()
 def index():
     return "Hey! This is the OSC API that is used to serve OSC details for it's various platforms."
 
 
 @app.route("/event", methods=["GET"])
-@cross_origin()
 def get_data():
     data = connection()
     return jsonify(data)
 
 
 @app.route("/event/<int:id>", methods=["GET"])
-@cross_origin()
 def get_id(id):
     data = connection()
     temp = 0
@@ -56,7 +56,6 @@ def get_id(id):
 
 
 @app.route("/event/latest", methods=["GET"])
-@cross_origin()
 def latest_event():
     data = connection()
     latest = data[-1]
