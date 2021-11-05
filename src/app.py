@@ -1,6 +1,6 @@
 from flask.templating import render_template
 from flask import Flask, jsonify, request, send_from_directory
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from src.connection import connection
 import os
 
@@ -25,25 +25,38 @@ def page_not_found(e):
 
 
 @app.route("/", methods=["GET"])
+@cross_origin()
 def index():
     return "Hey! This is the OSC API that is used to serve OSC details for it's various platforms."
 
 
 @app.route("/event", methods=["GET"])
+@cross_origin()
 def get_data():
     data = connection()
     return jsonify(data)
 
 
 @app.route("/event/<int:id>", methods=["GET"])
+@cross_origin()
 def get_id(id):
     data = connection()
+    temp = 0
     for event in data:
         if event["id"] == id:
-            return event
+            temp = 1
+            break
+        else:
+            temp = 0
+    if temp == 1:
+        event = jsonify(event)
+        return event
+    else:
+        return "ERROR 404: CANNOT GET {}".format(request.path)
 
 
 @app.route("/event/latest", methods=["GET"])
+@cross_origin()
 def latest_event():
     data = connection()
     latest = data[-1]
