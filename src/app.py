@@ -8,7 +8,10 @@ import os
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 api_cors_config = {
-  "origins": ["http://localhost:3000"]
+  "origins": ["http://localhost:3000",
+              "https://www.oscvitap.org/events",
+              "/*",
+              "https://fddad576.osc-website.pages.dev/events"]
 }
 CORS(app, resources={"/*": api_cors_config})
 
