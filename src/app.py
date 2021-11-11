@@ -5,7 +5,7 @@ import os
 from src.routes import api_blueprint
 
 
-def app_run():
+def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.url_map.strict_slashes = False
     api_cors_config = {
@@ -34,4 +34,5 @@ def app_run():
         return "ERROR 404: CANNOT GET {}".format(request.path)
 
     app.register_blueprint(api_blueprint)
-    app.run()
+
+    return app
