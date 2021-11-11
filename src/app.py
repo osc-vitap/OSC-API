@@ -1,65 +1,37 @@
 from flask.templating import render_template
-from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS, cross_origin
-from src.connection import connection
+from flask import Flask, request, jsonify, send_from_directory
 import os
+from src.routes import api_blueprint
 
 
-app = Flask(__name__)
-app.url_map.strict_slashes = False
-api_cors_config = {
-  "origins": ["http://localhost:3000",
-              "https://www.oscvitap.org/events",
-              "/*",
-              "https://fddad576.osc-website.pages.dev/events"]
-}
-CORS(app, resources={"/*": api_cors_config})
+def app_run():
+    app = Flask(__name__, instance_relative_config=True)
+    app.url_map.strict_slashes = False
+    api_cors_config = {
+        "origins": [
+            "/*",
+            "http://localhost:3000",
+            "https://www.oscvitap.org/events",
+        ]
+    }
+    CORS(app, resources={"/*": api_cors_config})
 
+    @app.route("/", methods=["GET"])
+    def index():
+        return "Hey! This is the OSC API that is used to serve OSC details for it's various platforms."
 
-@app.route("/favicon.ico")
-def favicon():
-    return send_from_directory(
-        os.path.join(app.root_path, "../assets"),
-        "favicon.ico",
-        mimetype="image/vnd.microsoft.icon",
-    )
+    @app.route("/favicon.ico")
+    def favicon():
+        return send_from_directory(
+            os.path.join(app.root_path, "../assets"),
+            "favicon.ico",
+            mimetype="image/vnd.microsoft.icon",
+        )
 
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return "ERROR 404: CANNOT GET {}".format(request.path)
-
-
-@app.route("/", methods=["GET"])
-def index():
-    return "Hey! This is the OSC API that is used to serve OSC details for it's various platforms."
-
-
-@app.route("/event", methods=["GET"])
-def get_data():
-    data = connection()
-    return jsonify(data)
-
-
-@app.route("/event/<int:id>", methods=["GET"])
-def get_id(id):
-    data = connection()
-    temp = 0
-    for event in data:
-        if event["id"] == id:
-            temp = 1
-            break
-        else:
-            temp = 0
-    if temp == 1:
-        event = jsonify(event)
-        return event
-    else:
+    @app.errorhandler(404)
+    def page_not_found(e):
         return "ERROR 404: CANNOT GET {}".format(request.path)
 
-
-@app.route("/event/latest", methods=["GET"])
-def latest_event():
-    data = connection()
-    latest = data[-1]
-    return latest
+    app.register_blueprint(api_blueprint)
+    app.run()
