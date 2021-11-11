@@ -19,7 +19,7 @@ def app_run():
 
     @app.route("/", methods=["GET"])
     def index():
-        return "Hey! This is the OSC API that is used to serve OSC details for it's various platforms."
+        return "<h3>Hey! This is the OSC API that is used to serve OSC details for it's various platforms.<h3>"
 
     @app.route("/favicon.ico")
     def favicon():
