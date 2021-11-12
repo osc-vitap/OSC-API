@@ -25,6 +25,6 @@ def addContent(data):
 
 def getData():
     collection = connection()
-    data = collection.find_one()
+    data = collection.find_one(sort=[("_id", pymongo.DESCENDING)])
     data = json.loads(json_util.dumps(data))
     return data
