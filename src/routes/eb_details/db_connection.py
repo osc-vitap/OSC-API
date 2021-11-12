@@ -28,3 +28,8 @@ def getData():
     data = collection.find_one(sort=[("_id", pymongo.DESCENDING)])
     data = json.loads(json_util.dumps(data))
     return data
+
+
+def getCurrentEB():
+    data = getData()
+    return data

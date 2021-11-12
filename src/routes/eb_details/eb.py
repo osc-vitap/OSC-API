@@ -1,18 +1,12 @@
-from flask import (
-    Flask,
-    jsonify,
-    request,
-    Blueprint,
-    redirect,
-    flash,
-    current_app,
-)
+from flask import request, Blueprint, flash, current_app
 from pymongo import results
 from werkzeug.utils import secure_filename
+from dotenv import load_dotenv
 import os
 from src.routes.eb_details.db_connection import *
 from src.routes.eb_details.csv_to_json import csv_to_json
 
+load_dotenv()
 UPLOAD_FOLDER = "temp"
 ALLOWED_EXTENSIONS = {"csv"}
 eb_bp = Blueprint("eb", __name__, url_prefix="/eb")
@@ -20,20 +14,23 @@ eb_bp = Blueprint("eb", __name__, url_prefix="/eb")
 
 @eb_bp.route("/", methods=["GET"])
 def get_data():
-    data = connection()
-    return "WORKING ON IT"
+    return getData()
 
 
 @eb_bp.route("/current", methods=["GET"])
 def current_eb():
-    result = getData()
-    return result
+    return getCurrentEB()
 
 
 @eb_bp.route("/uploadCSV", methods=["GET", "POST"])
 def uploadFiles():
     current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
     if request.method == "POST":
+        key = request.args.get("key")
+        if key == os.getenv("API_KEY"):
+            pass
+        else:
+            return "<h2> Invalid Key, To obtain access to the key contact osc@vitap.ac.in </h2>"
         if "file" not in request.files:
             return "<h2> ERROR: File not found. Please upload a CSV file containing details </h2>"
         file = request.files["file"]
