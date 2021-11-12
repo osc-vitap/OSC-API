@@ -3,7 +3,6 @@ from flask import (
     jsonify,
     request,
     Blueprint,
-    url_for,
     redirect,
     flash,
     current_app,
@@ -11,9 +10,10 @@ from flask import (
 from werkzeug.utils import secure_filename
 from flask_pymongo import PyMongo
 import os
-from src.routes.eb_details.db_connection import connection
+from src.routes.eb_details.db_connection import *
+from src.routes.eb_details.csv_to_json import csv_to_json
 
-UPLOAD_FOLDER = "File_upload"
+UPLOAD_FOLDER = "temp"
 ALLOWED_EXTENSIONS = {"csv"}
 eb_bp = Blueprint("eb", __name__, url_prefix="/eb")
 
@@ -45,7 +45,15 @@ def uploadFiles():
         if file and allowed_file:
             filename = secure_filename(filename)
             file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], filename))
-            return "<h3>File uploaded successfully!<h3>"
+            try:
+                csv_to_json(f"{UPLOAD_FOLDER}/{filename}")
+            except:
+                return "<h2> ERROR: Make sure to follow exact structure as provided in examples/ebDetails.csv </h2>"
+            return "<h2> File uploaded successfully! </h2>"
+        else:
+            return (
+                "<h2> ERROR: Make sure to upload a CSV file containing EB details </h2>"
+            )
     return """
     <!doctype html>
     <title>Upload new File</title>
