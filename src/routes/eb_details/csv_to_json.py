@@ -66,4 +66,8 @@ def csv_to_json(csvFile):
                     if dept in json_data:
                         json_data[dept][position] = value
 
-    return updateContent(json_data)
+    # jsonFile = "temp/temp_json_file.json"
+    # with open(jsonFile, "w", encoding="utf-8") as f:
+    #     f.write(json.dumps(json_data, indent=4, separators=(",", ": ")))
+    os.remove(csvFile)
+    return addContent(json_data)

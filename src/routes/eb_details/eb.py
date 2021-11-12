@@ -8,7 +8,6 @@ from flask import (
     current_app,
 )
 from werkzeug.utils import secure_filename
-from flask_pymongo import PyMongo
 import os
 from src.routes.eb_details.db_connection import *
 from src.routes.eb_details.csv_to_json import csv_to_json
@@ -46,10 +45,10 @@ def uploadFiles():
             filename = secure_filename(filename)
             file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], filename))
             try:
-                csv_to_json(f"{UPLOAD_FOLDER}/{filename}")
+                result = csv_to_json(f"{UPLOAD_FOLDER}/{filename}")
             except:
                 return "<h2> ERROR: Make sure to follow exact structure as provided in examples/ebDetails.csv </h2>"
-            return "<h2> File uploaded successfully! </h2>"
+            return result
         else:
             return (
                 "<h2> ERROR: Make sure to upload a CSV file containing EB details </h2>"
