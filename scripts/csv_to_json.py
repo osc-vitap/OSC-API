@@ -45,15 +45,14 @@ def csv_to_json(csvFile, jsonFile):
     All_positions = []
     for key, value in heirarchy_order.items():
         for i in value:
-            All_positions.append(i)
+            All_positions.append(i.capitalize())
 
     with open(csvFile, encoding="utf-8") as f:
         csvReader = list(csv.DictReader(f))
         for position in All_positions:
             for rows in csvReader:
-                key = rows["Position"]
-                print(position, rows["Position"])
-                if position in rows["Position"]:
+                key = rows["Position"].capitalize()
+                if position in key:
                     if key in json_data:
                         json_data[key].append(rows)
                     else:
