@@ -7,6 +7,7 @@ from flask import (
     flash,
     current_app,
 )
+from pymongo import results
 from werkzeug.utils import secure_filename
 import os
 from src.routes.eb_details.db_connection import *
@@ -25,8 +26,8 @@ def get_data():
 
 @eb_bp.route("/current", methods=["GET"])
 def current_eb():
-    data = connection()
-    return "WORKING ON IT"
+    result = getData()
+    return result
 
 
 @eb_bp.route("/uploadCSV", methods=["GET", "POST"])

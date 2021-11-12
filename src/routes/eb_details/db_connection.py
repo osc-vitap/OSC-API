@@ -1,4 +1,5 @@
-from pymongo import MongoClient, InsertOne
+from pymongo import MongoClient, InsertOne, collection
+from bson import json_util
 from dotenv import load_dotenv
 import pymongo
 import json
@@ -9,17 +10,21 @@ from pymongo.results import InsertManyResult
 
 
 def connection():
-    return "WORKING ON IT"
+    load_dotenv()
+    CONNECTION_STRING = os.getenv("MONGO_DB_CON")
+    db = MongoClient(CONNECTION_STRING).ebDetails
+    collection = db["details"]
+    return collection
 
 
 def addContent(data):
-    load_dotenv()
-    CONNECTION_STRING = os.getenv("MONGO_DB_CON")
-    client = MongoClient(CONNECTION_STRING)
-    db = client.ebDetails
-    collection = db["details"]
-
+    collection = connection()
     collection.insert_one(data)
-
-    client.close()
     return "<h2>DATA UPLOADED SUCCESSFULLY</h2>"
+
+
+def getData():
+    collection = connection()
+    data = collection.find_one()
+    data = json.loads(json_util.dumps(data))
+    return data

@@ -9,7 +9,8 @@
                 "LinkedIn": "-",
                 "GitHub": "-",
                 "Description": "-",
-                "Year": "-"
+                "startYear": "-",
+                "endYear": "-"
             }
         ],
         "Community leader": [
@@ -21,7 +22,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/svijayb/",
                 "GitHub": "https://github.com/SVijayB",
                 "Description": "The more you sweat in peace, the less you bleed in war.",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "President": [
@@ -33,7 +35,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/datta-adithya/",
                 "GitHub": "https://github.com/dat-adi",
                 "Description": "Kind of a pogchamp.",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Director": [
@@ -45,7 +48,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/harsha-samudrala-3ba66a216/",
                 "GitHub": "https://github.com/harsha0703",
                 "Description": "Think different for a better future. ",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Treasurer": [
@@ -57,7 +61,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/lakshmi-teja-bb45861a1/",
                 "GitHub": "https://github.com/LakshmiTejaP",
                 "Description": "A simple soul who gets really excited when the sky is in pretty colors.",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Vice president": [
@@ -69,7 +74,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/bhargavi-chada/",
                 "GitHub": "https://github.com/BhargaviChada",
                 "Description": "I like trains.",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Secretary": [
@@ -81,7 +87,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/ojasva-jain-9958071b2",
                 "GitHub": "https://github.com/ojasva",
                 "Description": "Windows user, but Open source supporter. ",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Head of public relations": [
@@ -93,7 +100,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/tarinig/",
                 "GitHub": "https://github.com/tatiniG/",
                 "Description": "when day dreams become reality",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Track lead": [
@@ -105,7 +113,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/dhruv-jha-2002/",
                 "GitHub": "https://github.com/fullmeteor172",
                 "Description": "Not lazy, just on power saving mode ;-;",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Hr lead": [
@@ -117,7 +126,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/angel-stanly-218a0893/",
                 "GitHub": "https://github.com/Maiden23",
                 "Description": "I dont know , and who cares , nobody is gonna read this anyways XD.",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ]
     },
@@ -131,7 +141,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/chethan-tirupati-523251194",
                 "GitHub": "https://github.com/chethantirupati",
                 "Description": "",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             },
             {
                 "Name": "M V S S Maruti Kameshwar",
@@ -141,7 +152,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/maruti-kameshwar-6b8846215/",
                 "GitHub": "https://github.com/marutikameshwar",
                 "Description": "",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Social media lead": [
@@ -153,7 +165,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/sabareesh-reddy-chowkacherla-6834a6196/",
                 "GitHub": "https://github.com/Sabareesh000",
                 "Description": "",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Organizer": [
@@ -165,7 +178,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/rahul-alokkan-16384b196/",
                 "GitHub": "https://github.com/Rahul-Alokkan",
                 "Description": "Tech Entusiast ",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             },
             {
                 "Name": "Nishita Singh",
@@ -175,7 +189,8 @@
                 "LinkedIn": "",
                 "GitHub": "",
                 "Description": "",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ]
     },
@@ -189,7 +204,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/n-krishna-raj/",
                 "GitHub": "https://github.com/kode-logger",
                 "Description": "Octocats never die, they only Evolve.",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             },
             {
                 "Name": "Sai Pranay",
@@ -199,7 +215,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/saipranay47/",
                 "GitHub": "https://github.com/saipranay47",
                 "Description": "I build things for the web",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             },
             {
                 "Name": "GVS Sai Madhav",
@@ -209,7 +226,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/gvssmadhav",
                 "GitHub": "https://github.com/gvssaimadhav",
                 "Description": "Soon, We Are Going to Live in the Era of AI.",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Developer": [
@@ -221,7 +239,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/mahesh-d-178b681b8/",
                 "GitHub": "https://github.com/mahesh-11102",
                 "Description": "Tech and Auto enthusiast",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             },
             {
                 "Name": "Aryan Mohanty",
@@ -231,7 +250,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/aryan-mohanty-230160221/",
                 "GitHub": "https://GitHub.com/AryanVIT",
                 "Description": "Better never means better for everyone it always means worse for some",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             },
             {
                 "Name": "Ashutosh Patel",
@@ -241,7 +261,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/ashutosh-patel-a828a4221/",
                 "GitHub": "https://github.com/ashu168",
                 "Description": "Don't complain just work harder",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             },
             {
                 "Name": "A. Loukya",
@@ -251,7 +272,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/adepu-loukya-67a345221/",
                 "GitHub": "https://github.com/A-Loukya",
                 "Description": "",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ]
     },
@@ -265,7 +287,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/kaarthik-patibandla-30017219a/",
                 "GitHub": "https://github.com/kaarthik01",
                 "Description": "That which does not kill us makes us stronger",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Chief editor": [
@@ -277,7 +300,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/chirag-gupta-8a16161ba",
                 "GitHub": "https://github.com/chiragg06",
                 "Description": "I overthink the niche.",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Head of videography": [
@@ -289,7 +313,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/abhiram-kalyan-883445190/",
                 "GitHub": "https://github.com/abhiram-kalyan",
                 "Description": "",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Documentation specialist": [
@@ -301,7 +326,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/sai-shaket-kalivarapu-51327618a/",
                 "GitHub": "https://github.com/KilluaZ06",
                 "Description": "I try to be the fun one",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ],
         "Designer": [
@@ -313,7 +339,8 @@
                 "LinkedIn": "https://www.linkedin.com/in/praseeda-kallakuri-970334221",
                 "GitHub": "https://github.com/praseedakallakuri",
                 "Description": "creative soul!!",
-                "Year": "2021"
+                "startYear": "2021",
+                "endYear": "2022"
             }
         ]
     }
