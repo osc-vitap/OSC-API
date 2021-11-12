@@ -1,5 +1,6 @@
 import csv
 import json
+from pprint import pprint
 
 """
 Convert CSV to JSON. 
@@ -57,6 +58,10 @@ def csv_to_json(csvFile, jsonFile):
                         json_data[key].append(rows)
                     else:
                         json_data[key] = [rows]
+
+    for key in json_data.keys():
+        for i in range(len(json_data[key])):
+            del json_data[key][i]["Position"]
 
     with open(jsonFile, "w", encoding="utf-8") as f:
         f.write(json.dumps(json_data, indent=4, separators=(",", ": ")))
