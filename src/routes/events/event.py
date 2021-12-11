@@ -1,8 +1,7 @@
 import os
 from flask import Blueprint, Flask, jsonify, request, abort
 from src.routes.events.db_connection import connection
-
-from src.utils import send_discord_announcement
+from src.utils.discord_webhook import send_discord_announcement
 
 event_bp = Blueprint("events", __name__, url_prefix="/event")
 
@@ -37,12 +36,12 @@ def latest_event():
     return latest
 
 
-@event_bp.route("/announcement", methods=["POST"])
+@event_bp.route("/announcement", methods=["GET"])
 def make_announcement():
     API_KEY = os.getenv("API_KEY")
     WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
-    api_key = request.args.get("api_key")
+    api_key, event_id = request.args.get("key"), request.args.get("id")
     required_event = None
 
     if not (api_key == API_KEY) or not API_KEY:
@@ -55,18 +54,14 @@ def make_announcement():
         )
 
     data = connection()
-    post_data = request.get_json(silent=True)
-
-    if not post_data or not post_data.get("event_id"):
+    print(event_id)
+    if not event_id:
         required_event = data[-1]
 
-    if not required_event:
-        event_id = post_data["event_id"]
-        for event in data:
-            if event["id"] == event_id:
-                required_event = event
-                break
+    for event in data:
+        if event["id"] == event_id:
+            required_event = event
+            break
 
     status = send_discord_announcement(WEBHOOK_URL, required_event)
-
     return jsonify({"success": status})
