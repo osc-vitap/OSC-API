@@ -7,14 +7,14 @@
 
 ## API Endpoints
 
-| ID  | Endpoint              | Example                                        | Details                                           |
-| --- | --------------------- | ---------------------------------------------- | ------------------------------------------------- |
-| 1   | [/]                   | https://osc-api.herokuapp.com/                 | Index.                                            |
-| 1   | [/api/]               | https://osc-api.herokuapp.com/api/             | API Base endpoint with documentation              |
-| 2   | [api/event/]          | https://osc-api.herokuapp.com/api/event/       | GET complete data on all the events.              |
-| 3   | [api/event/\<int:id>] | https://osc-api.herokuapp.com/api/event/8      | GET data from a particular event (from Event ID). |
-| 4   | [api/event/latest]    | https://osc-api.herokuapp.com/api/event/latest | GET data of the latest OSC event.                 |
-| 5   | [api/event/announcement]    | https://osc-api.herokuapp.com/api/event/announcement?api_key= | POST to this endpoint to send a discord announcement                |
+| ID  | Endpoint                 | Example                                                       | Details                                              |
+| --- | ------------------------ | ------------------------------------------------------------- | ---------------------------------------------------- |
+| 1   | [/]                      | https://osc-api.herokuapp.com/                                | Index.                                               |
+| 1   | [/api/]                  | https://osc-api.herokuapp.com/api/                            | API Base endpoint with documentation                 |
+| 2   | [api/event/]             | https://osc-api.herokuapp.com/api/event/                      | GET complete data on all the events.                 |
+| 3   | [api/event/\<int:id>]    | https://osc-api.herokuapp.com/api/event/8                     | GET data from a particular event (from Event ID).    |
+| 4   | [api/event/latest]       | https://osc-api.herokuapp.com/api/event/latest                | GET data of the latest OSC event.                    |
+| 5   | [api/event/announcement] | https://osc-api.herokuapp.com/api/event/announcement?api_key= | POST to this endpoint to send a discord announcement |
 
 ## Contributing
 
