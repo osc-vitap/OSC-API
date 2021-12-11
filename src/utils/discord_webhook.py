@@ -13,9 +13,9 @@ def send_discord_announcement(webhook_url: str, event: Dict):
     )
 
     embed.set_author(
-        name="Vijay",
-        url="https://github.com/SVijayB",
-        icon_url="https://avatars.githubusercontent.com/svijayb",
+        name="Open Source Community: VIT-AP",
+        url="https://github.com/Open-Source-Community-VIT-AP",
+        icon_url="https://avatars.githubusercontent.com/open-source-community-vit-ap",
     )
 
     embed.add_field(
