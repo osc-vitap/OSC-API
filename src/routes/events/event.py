@@ -43,6 +43,7 @@ def make_announcement():
     WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
     api_key = request.args.get("api_key")
+    required_event = None
 
     if not (api_key == API_KEY) or not API_KEY:
         return "Unauthorized: Invalid API Key", 401
@@ -54,21 +55,17 @@ def make_announcement():
         )
 
     data = connection()
-    post_data = request.json
+    post_data = request.get_json(silent=True)
 
     if not post_data or not post_data.get("event_id"):
-        return "Bad Request: No Event ID is found", 400
-
-    event_id = post_data["event_id"]
-    required_event = None
-
-    for event in data:
-        if event["id"] == event_id:
-            required_event = event
-            break
+        required_event = data[-1]
 
     if not required_event:
-        return f"No event found with ID: {event_id}", 404
+        event_id = post_data["event_id"]
+        for event in data:
+            if event["id"] == event_id:
+                required_event = event
+                break
 
     status = send_discord_announcement(WEBHOOK_URL, required_event)
 
