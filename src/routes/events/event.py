@@ -1,5 +1,8 @@
-from flask import Flask, jsonify, request, Blueprint
+import os
+from flask import Blueprint, Flask, jsonify, request, abort
 from src.routes.events.db_connection import connection
+
+from src.utils import send_discord_announcement
 
 event_bp = Blueprint("events", __name__, url_prefix="/event")
 
@@ -32,3 +35,38 @@ def latest_event():
     data = connection()
     latest = data[-1]
     return latest
+
+
+@event_bp.route("/announcement", methods=["POST"])
+def make_announcement():
+    API_KEY = os.getenv("API_KEY")
+    WEBHOOK_URL = os.getenv("WEBHOOK_URL")
+
+    api_key = request.args.get("api_key")
+    required_event = None
+
+    if not (api_key == API_KEY) or not API_KEY:
+        return "Unauthorized: Invalid API Key", 401
+
+    if not WEBHOOK_URL:
+        return (
+            "Internal Error: No Webhook URL is configured in environment variables",
+            500,
+        )
+
+    data = connection()
+    post_data = request.get_json(silent=True)
+
+    if not post_data or not post_data.get("event_id"):
+        required_event = data[-1]
+
+    if not required_event:
+        event_id = post_data["event_id"]
+        for event in data:
+            if event["id"] == event_id:
+                required_event = event
+                break
+
+    status = send_discord_announcement(WEBHOOK_URL, required_event)
+
+    return jsonify({"success": status})
