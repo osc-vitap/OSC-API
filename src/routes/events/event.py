@@ -59,7 +59,7 @@ def make_announcement():
         required_event = data[-1]
 
     for event in data:
-        if event["id"] == event_id:
+        if event_id == str(event["id"]):
             required_event = event
             break
 
