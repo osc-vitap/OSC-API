@@ -70,6 +70,6 @@ def make_announcement():
     if not required_event:
         return f"No event found with ID: {event_id}", 404
 
-    send_discord_announcement(WEBHOOK_URL, required_event)
+    status = send_discord_announcement(WEBHOOK_URL, required_event)
 
-    return jsonify(required_event)
+    return jsonify({"success": status})
