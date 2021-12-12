@@ -14,26 +14,17 @@ def get_data():
 
 @event_bp.route("/<int:id>", methods=["GET"])
 def get_id(id):
-    data = connection()
-    temp = 0
-    for event in data:
-        if event["id"] == id:
-            temp = 1
-            break
-        else:
-            temp = 0
-    if temp == 1:
-        event = jsonify(event)
-        return event
+    data = connection("eventID", id)
+    if data:
+        return jsonify(data)
     else:
         return "ERROR 404: CANNOT GET {}".format(request.path)
 
 
 @event_bp.route("/latest", methods=["GET"])
 def latest_event():
-    data = connection()
-    latest = data[-1]
-    return latest
+    data = connection("latest")
+    return jsonify(data)
 
 
 @event_bp.route("/announcement", methods=["GET"])
@@ -53,15 +44,10 @@ def make_announcement():
             500,
         )
 
-    data = connection()
-    print(event_id)
     if not event_id:
-        required_event = data[-1]
-
-    for event in data:
-        if event_id == str(event["id"]):
-            required_event = event
-            break
+        required_event = connection("latest")
+    else:
+        required_event = connection("eventID", event_id)
 
     status = send_discord_announcement(WEBHOOK_URL, required_event)
     return jsonify({"success": status})
