@@ -33,13 +33,16 @@ def addContent(data, year):
     return {"status": "success"}
 
 
-def getData():
+def getData(year, department):
     collection = connection()
-    data = collection.find_one(sort=[("_id", pymongo.DESCENDING)])
+    try:
+        data = collection.find_one({"Year": year})
+        del data["_id"]
+        if not department == None:
+            department = department.replace("-", " ")
+            department = department.title()
+            data = data[department]
+    except:
+        return False
     data = json.loads(json_util.dumps(data))
-    return data
-
-
-def getCurrentEB():
-    data = getData()
     return data

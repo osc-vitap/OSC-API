@@ -1,4 +1,4 @@
-from flask import request, Blueprint, flash, current_app
+from flask import request, Blueprint, flash, current_app, jsonify
 from pymongo import results
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
@@ -14,14 +14,13 @@ ALLOWED_EXTENSIONS = {"csv"}
 eb_bp = Blueprint("eb", __name__, url_prefix="/eb")
 
 
-@eb_bp.route("/", methods=["GET"])
-def get_data():
-    return getData()
-
-
-@eb_bp.route("/current", methods=["GET"])
-def current_eb():
-    return getCurrentEB()
+@eb_bp.route("/<int:year>", methods=["GET"])
+def get_data(year):
+    department = request.args.get("dept")
+    result = getData(year, department)
+    if not result:
+        return ("ERROR: Data corresponding to search queries not found"), 404
+    return jsonify(result)
 
 
 @eb_bp.route("/add_data", methods=["GET", "POST"])
