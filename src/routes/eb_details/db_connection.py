@@ -16,7 +16,20 @@ def connection():
 
 def addContent(data, year):
     collection = connection()
-    collection.insert_one(data)
+    if collection.count_documents({"Year": year}) == 0:
+        collection.insert_one(data)
+    else:
+        collection.update_one(
+            {"Year": year},
+            {
+                "$set": {
+                    "Admin Department": data["Admin Department"],
+                    "Event Department": data["Event Department"],
+                    "Tech Department": data["Tech Department"],
+                    "Design Team": data["Design Team"],
+                }
+            },
+        )
     return {"status": "success"}
 
 

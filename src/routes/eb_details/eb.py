@@ -1,4 +1,3 @@
-import traceback
 from flask import request, Blueprint, flash, current_app
 from pymongo import results
 from werkzeug.utils import secure_filename
