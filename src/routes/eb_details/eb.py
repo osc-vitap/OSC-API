@@ -32,6 +32,15 @@ def get_current_eb():
     return jsonify(result)
 
 
+@eb_bp.route("/delete_data", methods=["DELETE"])
+def delete_data():
+    key, year = request.args.get("key"), int(request.args.get("year"))
+    if not key == os.getenv("API_KEY"):
+        return "Unauthorized: Invalid API Key", 401
+    else:
+        return deleteData(year)
+
+
 @eb_bp.route("/add_data", methods=["GET", "POST"])
 def uploadFiles():
     current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER

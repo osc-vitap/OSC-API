@@ -33,6 +33,15 @@ def addContent(data, year):
     return {"status": "success"}
 
 
+def deleteData(year):
+    collection = connection()
+    try:
+        collection.delete_one({"Year": year})
+        return {"status": "success", "message": "Data deleted"}
+    except:
+        return {"status": "fail", "message": "Year not found"}, 400
+
+
 def getData(year, department):
     collection = connection()
     try:
