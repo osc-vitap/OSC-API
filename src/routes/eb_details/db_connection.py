@@ -46,3 +46,10 @@ def getData(year, department):
         return False
     data = json.loads(json_util.dumps(data))
     return data
+
+
+def getCurrentEB(department):
+    collection = connection()
+    latest = collection.find({}).sort("Year", pymongo.DESCENDING).limit(1)
+    year = latest[0]["Year"]
+    return getData(year, department)

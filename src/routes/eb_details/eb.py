@@ -23,6 +23,15 @@ def get_data(year):
     return jsonify(result)
 
 
+@eb_bp.route("/current", methods=["GET"])
+def get_current_eb():
+    department = request.args.get("dept")
+    result = getCurrentEB(department)
+    if not result:
+        return ("ERROR: Data corresponding to search queries not found"), 404
+    return jsonify(result)
+
+
 @eb_bp.route("/add_data", methods=["GET", "POST"])
 def uploadFiles():
     current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
