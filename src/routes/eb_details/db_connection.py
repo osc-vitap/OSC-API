@@ -1,12 +1,9 @@
-from pymongo import MongoClient, InsertOne, collection
+from pymongo import MongoClient
 from bson import json_util
 from dotenv import load_dotenv
 import pymongo
 import json
 import os
-
-from pymongo.message import insert
-from pymongo.results import InsertManyResult
 
 
 def connection():
@@ -17,10 +14,10 @@ def connection():
     return collection
 
 
-def addContent(data):
+def addContent(data, year):
     collection = connection()
     collection.insert_one(data)
-    return "<h2>DATA UPLOADED SUCCESSFULLY</h2>"
+    return {"status": "success"}
 
 
 def getData():

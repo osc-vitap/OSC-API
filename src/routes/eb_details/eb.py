@@ -1,10 +1,13 @@
+import traceback
 from flask import request, Blueprint, flash, current_app
 from pymongo import results
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 import os
+
 from src.routes.eb_details.db_connection import *
-from src.routes.eb_details.csv_to_json import csv_to_json
+from src.utils.csv_to_json import csv_to_json
+
 
 load_dotenv()
 UPLOAD_FOLDER = "temp"
@@ -22,11 +25,11 @@ def current_eb():
     return getCurrentEB()
 
 
-@eb_bp.route("/uploadCSV", methods=["GET", "POST"])
+@eb_bp.route("/add_data", methods=["GET", "POST"])
 def uploadFiles():
     current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
     if request.method == "POST":
-        key, year = request.args.get("key"), request.args.get("year")
+        key, year = request.args.get("key"), int(request.args.get("year"))
         if not key == os.getenv("API_KEY"):
             return "Unauthorized: Invalid API Key", 401
         if not year:

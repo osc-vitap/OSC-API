@@ -1,12 +1,12 @@
 import csv
-import json
 import os
+
+# import json
 from src.routes.eb_details.db_connection import *
 
 
 def csv_to_json(csvFile, year):
     json_data = {}
-    result = {}
     position_data = {}
     heirarchy_order = {
         "Admin Department": [
@@ -67,9 +67,10 @@ def csv_to_json(csvFile, year):
                 if position in heirarchy_order[dept][i].capitalize():
                     if dept in json_data:
                         json_data[dept][position] = value
-    result[year] = json_data
-    jsonFile = "temp/temp_json_file.json"
-    with open(jsonFile, "w", encoding="utf-8") as f:
-        f.write(json.dumps(result, indent=4, separators=(",", ": ")))
+    json_data["Year"] = year
+    # jsonFile = "temp/temp_json_file.json"
+    # with open(jsonFile, "w", encoding="utf-8") as f:
+    #     f.write(json.dumps(json_data, indent=4, separators=(",", ": ")))
     os.remove(csvFile)
-    return addContent(result)
+
+    return addContent(json_data, year)
