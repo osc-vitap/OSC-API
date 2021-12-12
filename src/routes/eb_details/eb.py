@@ -26,31 +26,38 @@ def current_eb():
 def uploadFiles():
     current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
     if request.method == "POST":
-        key = request.args.get("key")
-        if key == os.getenv("API_KEY"):
-            pass
-        else:
-            return "<h2> Invalid Key, To obtain access to the key contact osc@vitap.ac.in </h2>"
+        key, year = request.args.get("key"), request.args.get("year")
+        if not key == os.getenv("API_KEY"):
+            return "Unauthorized: Invalid API Key", 401
+        if not year:
+            return (
+                "Error: Please provide the year for which you want to upload EB details",
+                400,
+            )
         if "file" not in request.files:
-            return "<h2> ERROR: File not found. Please upload a CSV file containing details </h2>"
+            return (
+                "ERROR: File not found. Please upload a CSV file containing details",
+                400,
+            )
         file = request.files["file"]
         filename = file.filename
         if filename == "":
-            flash("No selected file")
-            return "<h2> ERROR: File not found. Please upload a CSV file containing EB details </h2>"
+            flash("No file selected")
+            return "ERROR: File not found.", 400
         allowed_file = "." in filename and filename.rsplit(".", 1)[1].lower() in {"csv"}
         if file and allowed_file:
             filename = secure_filename(filename)
             file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], filename))
             try:
-                result = csv_to_json(f"{UPLOAD_FOLDER}/{filename}")
+                result = csv_to_json(f"{UPLOAD_FOLDER}/{filename}", year)
             except:
-                return "<h2> ERROR: Make sure to follow exact structure as provided in examples/ebDetails.csv </h2>"
+                return (
+                    "ERROR: Make sure to follow exact structure as provided in examples/ebDetails.csv",
+                    400,
+                )
             return result
         else:
-            return (
-                "<h2> ERROR: Make sure to upload a CSV file containing EB details </h2>"
-            )
+            return ("ERROR: Only CSV files are allowed", 400)
     return """
     <!doctype html>
     <title>Upload new File</title>
