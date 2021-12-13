@@ -4,10 +4,15 @@ import os
 import json
 
 
-def connection():
+def connection(type=None, *args):
     conn = psycopg2.connect(os.getenv("DATABASE_URL"))
     cursor = conn.cursor()
-    query = """SELECT * FROM eventreg_event"""
+    if not type:
+        query = """SELECT * FROM eventreg_event"""
+    elif type == "latest":
+        query = """SELECT * FROM eventreg_event ORDER BY id DESC LIMIT 1"""
+    elif type == "eventID":
+        query = f"""SELECT * FROM eventreg_event WHERE id = {args[0]}"""
     cursor.execute(query)
     data = cursor.fetchall()
     conn.close()
@@ -35,6 +40,9 @@ def connection():
                 ),
             }
         )
+
+    if not result:
+        return None
 
     result.sort(key=lambda x: x["id"])
     json_data = json.dumps(result, indent=4, default=str)

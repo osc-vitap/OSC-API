@@ -16,6 +16,7 @@ def create_app():
         ]
     }
     CORS(app, resources={"/*": api_cors_config})
+    app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
     @app.route("/", methods=["GET"])
     def index():

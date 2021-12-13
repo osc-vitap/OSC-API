@@ -1,16 +1,11 @@
 import csv
-import json
-from pprint import pprint
+import os
 
-"""
-Convert CSV to JSON. 
-Use this script after collecting EB member details from Google spreadsheet.
-Download the spreadsheet and add it's path to line 29.
-Once completed, you should get your JSON file
-"""
+# import json
+from src.routes.eb_details.db_connection import *
 
 
-def csv_to_json(csvFile, jsonFile):
+def csv_to_json(csvFile, year):
     json_data = {}
     position_data = {}
     hierarchy_order = {
@@ -72,10 +67,10 @@ def csv_to_json(csvFile, jsonFile):
                 if position in hierarchy_order[dept][i].capitalize():
                     if dept in json_data:
                         json_data[dept][position] = value
+    json_data["Year"] = year
+    # jsonFile = "temp/temp_json_file.json"
+    # with open(jsonFile, "w", encoding="utf-8") as f:
+    #     f.write(json.dumps(json_data, indent=4, separators=(",", ": ")))
+    os.remove(csvFile)
 
-    with open(jsonFile, "w", encoding="utf-8") as f:
-        f.write(json.dumps(json_data, indent=4, separators=(",", ": ")))
-
-
-if __name__ == "__main__":
-    csv_to_json(csvFile="examples/ebDetails.csv", jsonFile="examples/ebDetails.json")
+    return addContent(json_data, year)

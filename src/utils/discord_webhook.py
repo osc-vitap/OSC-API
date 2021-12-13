@@ -1,10 +1,11 @@
-from typing import Dict
+from typing import List
 from dhooks import Embed, Webhook
 import traceback
 
 
-def send_discord_announcement(webhook_url: str, event: Dict) -> bool:
+def send_discord_announcement(webhook_url: str, event: List) -> bool:
     try:
+        event = event[0]
         w = Webhook(webhook_url)
         embed = Embed(
             title="📢  " + event["eventName"],
