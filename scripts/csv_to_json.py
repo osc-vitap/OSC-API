@@ -13,7 +13,7 @@ Once completed, you should get your JSON file
 def csv_to_json(csvFile, jsonFile):
     json_data = {}
     position_data = {}
-    heirarchy_order = {
+    hierarchy_order = {
         "Admin Department": [
             "Club Coordinator",
             "Community Leader",
@@ -45,7 +45,7 @@ def csv_to_json(csvFile, jsonFile):
         ],
     }
     All_positions = []
-    for key, value in heirarchy_order.items():
+    for key, value in hierarchy_order.items():
         for i in value:
             All_positions.append(i.capitalize())
 
@@ -64,12 +64,12 @@ def csv_to_json(csvFile, jsonFile):
         for i in range(len(json_data[key])):
             del json_data[key][i]["Position"]
 
-    dept_list = heirarchy_order.keys()
+    dept_list = hierarchy_order.keys()
     for dept in dept_list:
         json_data[dept] = {}
         for position, value in position_data.items():
-            for i in range(len(heirarchy_order[dept])):
-                if position in heirarchy_order[dept][i].capitalize():
+            for i in range(len(hierarchy_order[dept])):
+                if position in hierarchy_order[dept][i].capitalize():
                     if dept in json_data:
                         json_data[dept][position] = value
 

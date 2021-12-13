@@ -29,6 +29,6 @@ def getLatestEb():
     return current_eb
 
 
-# Try to avoid sorting data -> Maintain heirarchy structure.
+# Try to avoid sorting data -> Maintain hierarchy structure.
 result = getLatestEb()
 pprint(result)
