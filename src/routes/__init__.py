@@ -2,7 +2,7 @@ from flask import Blueprint
 from src.routes.events import event
 from src.routes.eb_details import eb
 
-api_blueprint = Blueprint("API", __name__, url_prefix="/api/")
+api_blueprint = Blueprint("API", __name__, url_prefix="/api/v1/")
 api_blueprint.register_blueprint(event.event_bp)
 api_blueprint.register_blueprint(eb.eb_bp)
 
