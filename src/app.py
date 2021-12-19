@@ -30,10 +30,6 @@ def create_app():
             mimetype="image/vnd.microsoft.icon",
         )
 
-    @app.errorhandler(404)
-    def page_not_found(e):
-        return "ERROR 404: CANNOT GET {}".format(request.path)
-
     app.register_blueprint(api_blueprint)
 
     return app
