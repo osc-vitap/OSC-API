@@ -65,4 +65,4 @@ def project_info():
     for i in results:   #Removing stars from the results
         del i['stars']
 
-    return jsonify(results)
+    return jsonify(results[0:10])
