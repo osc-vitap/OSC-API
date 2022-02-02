@@ -15,6 +15,7 @@
 | 3   | [api/event/\<int:id>]    | https://osc-api.herokuapp.com/api/event/8                     | GET data from a particular event (from Event ID).    |
 | 4   | [api/event/latest]       | https://osc-api.herokuapp.com/api/event/latest                | GET data of the latest OSC event.                    |
 | 5   | [api/event/announcement] | https://osc-api.herokuapp.com/api/event/announcement?api_key= | POST to this endpoint to send a discord announcement |
+| 6   | [api/projects/] | https://osc-api.herokuapp.com/api/projects | GET all public repos from the github organisation. |
 
 ## Contributing
 
