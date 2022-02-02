@@ -6,7 +6,8 @@ from src.routes.projects import projects
 api_blueprint = Blueprint("API", __name__, url_prefix="/api/v1/")
 api_blueprint.register_blueprint(event.event_bp)
 api_blueprint.register_blueprint(eb.eb_bp)
-api_blueprint.register_blueprint(projects.projects)
+api_blueprint.register_blueprint(projects.projects_bp)
+
 
 @api_blueprint.route("/", methods=["GET"])
 def get_data():
